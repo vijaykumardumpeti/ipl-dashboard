@@ -1,1 +1,11 @@
 /* Write your CSS here */
+.Team-matches-container {
+  background-image: linear-gradient(to bottom, #d91c1f, #1e293b);
+  height: 100vh;
+  padding: 10px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

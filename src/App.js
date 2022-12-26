@@ -7,9 +7,9 @@ import './App.css'
 
 const App = () => (
   <div className="app-bg-container">
-    <Home />
     <Switch>
-      <Route path="/team-matches/:id" component={TeamMatches} />
+      <Route exact path="/" component={Home} />
+      <Route exact path="/team-matches/:id" component={TeamMatches} />
     </Switch>
   </div>
 )
