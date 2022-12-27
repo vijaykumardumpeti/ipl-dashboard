@@ -1,11 +1,15 @@
 import {Component} from 'react'
+import Loader from 'react-loader-spinner'
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
 import LatestMatch from '../LatestMatch'
+import MatchCard from '../MatchCard'
 
 import './index.css'
 
 export default class TeamMatches extends Component {
   state = {
     data: {},
+    isLoading: true,
   }
 
   componentDidMount() {
@@ -54,23 +58,80 @@ export default class TeamMatches extends Component {
     console.log(frontEndData)
     this.setState({
       data: frontEndData,
+      isLoading: false,
     })
   }
 
   render() {
-    const {data} = this.state
-    const {teamBannerUrl, latestMatchDetails} = data
-    console.log(latestMatchDetails)
-    return (
-      <div className="Team-matches-container">
-        <div className="team-banner-url">
-          <img alt="team banner" src={teamBannerUrl} />
-        </div>
-        <h1>Latest Matches</h1>
+    const {data, isLoading} = this.state
+    const {teamBannerUrl, latestMatchDetails, recentMatches} = data
 
-        <h1>details</h1>
-        <LatestMatch latestMatchDetails={latestMatchDetails} />
-      </div>
+    console.log(latestMatchDetails)
+
+    let background
+    if (isLoading === false) {
+      const {competingTeam} = latestMatchDetails
+      switch (competingTeam) {
+        case 'Sunrisers Hyderabad':
+          background = 'red-background'
+          break
+        case 'Delhi Capitals':
+          background = 'navyBlue-red'
+          break
+        case 'Royal Challengers Bangalore':
+          background = 'red-gold'
+          break
+        case 'Kolkata Knight Riders':
+          background = 'purple-gold'
+          break
+        case 'Mumbai Indians':
+          background = 'blue-orange'
+          break
+        case 'Chennai Super Kings':
+          background = 'blue-yellow'
+          break
+        case 'Rajasthan Royals':
+          background = 'blue-gold'
+          break
+        case 'Kings XI Punjab':
+          background = 'red-lightGray'
+          break
+
+        default:
+          background = 'white'
+          break
+      }
+    }
+
+    console.log(background)
+    return (
+      <>
+        {isLoading ? (
+          <div testid="loader">
+            <Loader type="Oval" color="#ffffff" height={50} width={50} />
+          </div>
+        ) : (
+          <div className={`Team-matches-container ${'background'}`}>
+            <div className="team-banner-url">
+              <img alt="team banner" src={teamBannerUrl} />
+            </div>
+
+            <div className="latest-matches-heading">
+              <h1>Latest Matches</h1>
+            </div>
+
+            <LatestMatch latestMatchDetails={latestMatchDetails} />
+            <ul className="match-card-big-container">
+              {recentMatches.map(eachMatchDetails => (
+                <MatchCard
+                  key={eachMatchDetails.id}
+                  eachMatchDetails={eachMatchDetails}
+                />
+              ))}
+            </ul>
+          </div>
+        )}
+      </>
     )
   }
 }

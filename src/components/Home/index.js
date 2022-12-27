@@ -39,7 +39,7 @@ export default class Home extends Component {
     return (
       <div className="home-bg-container">
         {isLoading ? (
-          <div>
+          <div testid="loader">
             <Loader type="Oval" color="#00BFFF" height={50} width={50} />
           </div>
         ) : (

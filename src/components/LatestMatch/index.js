@@ -20,10 +20,10 @@ export default class LatestMatch extends Component {
     return (
       <div className="latest-match-card-container">
         <div className="first-container">
-          <h1>{competingTeam}</h1>
-          <h1>{date}</h1>
-          <p>{venue}</p>
-          <p>{result}</p>
+          <p className="heading">{competingTeam}</p>
+          <h1 className="heading">{date}</h1>
+          <p className="para">{venue}</p>
+          <p className="para">{result}</p>
         </div>
 
         <div className="second-container">
@@ -31,15 +31,15 @@ export default class LatestMatch extends Component {
         </div>
 
         <div className="third-container">
-          <h1>First Innings</h1>
-          <p>{firstInnings}</p>
-          <h1>Second Innings</h1>
-          <p>{secondInnings}</p>
+          <h1 className="heading">First Innings</h1>
+          <p className="para">{firstInnings}</p>
+          <h1 className="heading">Second Innings</h1>
+          <p className="para">{secondInnings}</p>
 
-          <h1>Man Of The Match</h1>
-          <p>{manOfTheMatch}</p>
-          <h1>Umpires</h1>
-          <p>{umpires}</p>
+          <h1 className="heading">Man Of The Match</h1>
+          <p className="para">{manOfTheMatch}</p>
+          <h1 className="heading">Umpires</h1>
+          <p className="para">{umpires}</p>
         </div>
       </div>
     )

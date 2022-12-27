@@ -1,7 +1,6 @@
 /* Write your CSS here */
 .Team-matches-container {
   padding: 10px;
-  background-image: linear-gradient(to bottom, #d91c1f, #1e293b);
 
   display: flex;
   flex-direction: column;
@@ -48,10 +47,4 @@
 }
 .blue-yellow {
   background-image: linear-gradient(to bottom, blue, yellow);
-}
-.blue-gold {
-  background-image: linear-gradient(to bottom, blue, gold);
-}
-.red-lightGray {
-  background-image: linear-gradient(to bottom, red, #d3d3d3);
 }
