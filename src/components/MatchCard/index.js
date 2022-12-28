@@ -17,12 +17,12 @@ export default class MatchCard extends Component {
       <li key={key} className="match-card-container">
         <img
           className="small-team-logo"
-          alt={competingTeam}
+          alt={`competing team ${competingTeam}`}
           src={competingTeamLogo}
         />
         <p className="heading">{competingTeam}</p>
         <p className="para">{result}</p>
-        <h1 className={color}>{matchStatus}</h1>
+        <p className={color}>{matchStatus}</p>
       </li>
     )
   }

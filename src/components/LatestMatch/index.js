@@ -21,13 +21,17 @@ export default class LatestMatch extends Component {
       <div className="latest-match-card-container">
         <div className="first-container">
           <p className="heading">{competingTeam}</p>
-          <h1 className="heading">{date}</h1>
+          <p className="heading">{date}</p>
           <p className="para">{venue}</p>
           <p className="para">{result}</p>
         </div>
 
         <div className="second-container">
-          <img className="competing-team-logo" alt="" src={competingTeamLogo} />
+          <img
+            className="competing-team-logo"
+            alt={`latest match ${competingTeam}`}
+            src={competingTeamLogo}
+          />
         </div>
 
         <div className="third-container">

@@ -5,7 +5,7 @@ export default class NotFound extends Component {
   render() {
     return (
       <div className="not-found-bg-container">
-        <h1>Page Note Found!!</h1>
+        <h1>Page Not Found!!</h1>
       </div>
     )
   }

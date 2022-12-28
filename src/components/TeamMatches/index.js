@@ -10,6 +10,7 @@ export default class TeamMatches extends Component {
   state = {
     data: {},
     isLoading: true,
+    backGroundColor: '',
   }
 
   componentDidMount() {
@@ -55,55 +56,54 @@ export default class TeamMatches extends Component {
         venue: eachObject.venue,
       })),
     }
+
+    let background
+
+    switch (frontEndData.latestMatchDetails.competingTeam) {
+      case 'Sunrisers Hyderabad':
+        background = 'red-background'
+        break
+      case 'Delhi Capitals':
+        background = 'navyBlue-red'
+        break
+      case 'Royal Challengers Bangalore':
+        background = 'red-gold'
+        break
+      case 'Kolkata Knight Riders':
+        background = 'purple-gold'
+        break
+      case 'Mumbai Indians':
+        background = 'blue-orange'
+        break
+      case 'Chennai Super Kings':
+        background = 'blue-yellow'
+        break
+      case 'Rajasthan Royals':
+        background = 'blue-gold'
+        break
+      case 'Kings XI Punjab':
+        background = 'red-lightGray'
+        break
+
+      default:
+        background = 'white'
+        break
+    }
+
     console.log(frontEndData)
     this.setState({
       data: frontEndData,
       isLoading: false,
+      backGroundColor: background,
     })
   }
 
   render() {
-    const {data, isLoading} = this.state
+    const {data, isLoading, backGroundColor} = this.state
     const {teamBannerUrl, latestMatchDetails, recentMatches} = data
 
     console.log(latestMatchDetails)
 
-    let background
-    if (isLoading === false) {
-      const {competingTeam} = latestMatchDetails
-      switch (competingTeam) {
-        case 'Sunrisers Hyderabad':
-          background = 'red-background'
-          break
-        case 'Delhi Capitals':
-          background = 'navyBlue-red'
-          break
-        case 'Royal Challengers Bangalore':
-          background = 'red-gold'
-          break
-        case 'Kolkata Knight Riders':
-          background = 'purple-gold'
-          break
-        case 'Mumbai Indians':
-          background = 'blue-orange'
-          break
-        case 'Chennai Super Kings':
-          background = 'blue-yellow'
-          break
-        case 'Rajasthan Royals':
-          background = 'blue-gold'
-          break
-        case 'Kings XI Punjab':
-          background = 'red-lightGray'
-          break
-
-        default:
-          background = 'white'
-          break
-      }
-    }
-
-    console.log(background)
     return (
       <>
         {isLoading ? (
@@ -111,7 +111,7 @@ export default class TeamMatches extends Component {
             <Loader type="Oval" color="#ffffff" height={50} width={50} />
           </div>
         ) : (
-          <div className={`Team-matches-container ${'background'}`}>
+          <div className={`Team-matches-container ${backGroundColor}`}>
             <div className="team-banner-url">
               <img alt="team banner" src={teamBannerUrl} />
             </div>
